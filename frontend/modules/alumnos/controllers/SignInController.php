@@ -98,9 +98,7 @@ class SignInController extends \yii\web\Controller
             return ActiveForm::validate($model);
         }
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            //echo 'hola';
-            //var_dump($model->login());
-            return $this->goBack();
+            return $this->redirect('../../taller/index');
         }
 
         return $this->render('login', [
