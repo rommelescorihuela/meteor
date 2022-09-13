@@ -8,6 +8,7 @@ use frontend\models\TallerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * TallerController implements the CRUD actions for Taller model.
@@ -20,6 +21,22 @@ class TallerController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'actions' => [
+                            'index', 'view', 'create', 'update', 'delete'
+                        ],
+                        'allow' => isset($_SESSION['user']),
+                        //'roles' => ['?'],
+                        'denyCallback' => function () {
+                            return Yii::$app->controller->redirect(['/alumnos/sign-in/login']);
+                        }
+                    ],
+                ]
+            ],
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

@@ -8,7 +8,7 @@ use frontend\models\search\DatosJuridicos as DatosJuridicosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 /**
  * DatosJuridicosController implements the CRUD actions for DatosJuridicos model.
  */

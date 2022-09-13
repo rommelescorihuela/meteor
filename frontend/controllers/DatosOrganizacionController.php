@@ -347,7 +347,7 @@ class DatosOrganizacionController extends Controller
         'methods' => [ 
             //'SetHeader'=>['Organizacion de Usuarion y Usuarias'], 
             'SetHeader' => ['' . '<table width="100%">'.'<tr>'.'<td width="75%"><img width="350px" src="img/conatel-logo.jpg"></a></td>'.'<td width="25%">Fecha de Solicitud: '.date("d/m/Y") .'</td>' . '<tr/>' . '</table>' . ''], 
-            'SetFooter'=>['<table width="100%"><tr><td style="padding-left: 30px;">PARA MAYOR INFORMACIÓN COMUNICARSE A CONATEL POR: Teléfonos: (0212)909.03.75 / 04.90 / 46.81 / 68.95 / 66.25 / 0800 Conatel (2662835)</td></tr><tr><td style="padding-left: 80px;">Correo Electrónico: participacionciudadana@conatel.gob.ve Página Web: www.usuariosyusuarias.org.ve – www.conatel.gob.ve</td></tr></table>'],
+            'SetFooter'=>['<table width="100%"><tr><td style="padding-left: 30px;">PARA MAYOR INFORMACIÓN COMUNICARSE A CONATEL POR: Teléfonos: (0212)909.03.75 / 04.90 / 46.81 / 68.95 / 66.25 / 0800 Conatel (2662835)</td></tr><tr><td style="padding-left: 120px;">Correo Electrónico: participacionciudadana@conatel.gob.ve   Página Web: www.conatel.gob.ve</td></tr></table>'],
         ]
     ]);
      

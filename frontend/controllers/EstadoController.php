@@ -8,6 +8,7 @@ use frontend\models\search\EstadoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * EstadoController implements the CRUD actions for Estado model.

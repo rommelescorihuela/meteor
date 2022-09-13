@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\captcha\Captcha;
+
 
 /**
  * @var yii\web\View $this
@@ -23,7 +25,10 @@ $this->title = Yii::t('frontend', 'Sign up');
                     <?php echo $form->field($model, 'email') ?>
                     <?php echo $form->field($model, 'password')->passwordInput() ?>
                     <?php echo $form->field($model, 'password_confirm')->passwordInput() ?>
-
+                    <?= $form->field($model, 'captcha')->widget(Captcha::class, [
+                            'captchaAction'=>'/site/captcha'
+                        ]); 
+                    ?>
                     <div class="form-group">
                         <?php echo Html::submitButton(Yii::t('frontend', 'Sign up'), ['class' => 'btn btn-primary btn-lg btn-block', 'name' => 'signup-button']) ?>
                     </div>
@@ -33,3 +38,9 @@ $this->title = Yii::t('frontend', 'Sign up');
     </div>
 </div>
 <?php ActiveForm::end(); ?>
+<?php
+    $js = <<<JS
+       $('#signupform-captcha-image').trigger('click');
+    JS;
+    $this->registerJs($js, $this::POS_READY);
+?>

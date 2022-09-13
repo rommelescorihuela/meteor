@@ -43,7 +43,7 @@ class SiteController extends Controller
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null
+                //'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null
             ],
             'set-locale' => [
                 'class' => 'common\actions\SetLocaleAction',
@@ -120,8 +120,10 @@ class SiteController extends Controller
 
         return $content;
     }
-    public function actionRegistro()
+    public function actionLogout()
     {
-        echo 'hola';
+        $session = Yii::$app->session;
+        $session->destroy();
+        return $this->goHome();
     }
 }

@@ -31,3 +31,9 @@ $this->title = Yii::t('frontend', 'Contact us');
     </div>
 
 </div>
+<?php
+    $js = <<<JS
+       $('#contactform-verifycode-image').trigger('click');
+    JS;
+    $this->registerJs($js, $this::POS_READY);
+?>

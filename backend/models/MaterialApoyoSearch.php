@@ -41,9 +41,11 @@ class MaterialApoyoSearch extends MaterialApoyo
      */
     public function search($params,$id_taller)
     {
+        $id_taller;
         $query = MaterialApoyo::find();
         $query->andFilterWhere([
-            'id' => $id_taller,
+            'id' => $this->id,
+            'id_taller' => $id_taller,
         ]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -53,10 +55,6 @@ class MaterialApoyoSearch extends MaterialApoyo
             return $dataProvider;
         }
 
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'id_taller' => $id_taller,
-        ]);
 
         $query->andFilterWhere(['ilike', 'nombre', $this->nombre])
             ->andFilterWhere(['ilike', 'tipo', $this->tipo]);

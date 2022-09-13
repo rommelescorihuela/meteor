@@ -19,6 +19,8 @@ class PasswordResetRequestForm extends Model
      */
     public $email;
 
+    public $captcha;
+
     /**
      * @inheritdoc
      */
@@ -33,6 +35,7 @@ class PasswordResetRequestForm extends Model
                 'filter' => ['status' => User::STATUS_ACTIVE],
                 'message' => 'There is no user with such email.'
             ],
+            ['captcha', 'captcha'],
         ];
     }
 

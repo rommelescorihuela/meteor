@@ -9,6 +9,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
+        '@root' => realpath(dirname(__FILE__).'/../../'),
     ],
     'components' => [
         'authManager' => [
@@ -178,6 +179,22 @@ if (YII_ENV_PROD) {
         'levels' => ['error', 'warning'],
         'message' => ['from' => env('ROBOT_EMAIL'), 'to' => env('ADMIN_EMAIL')]
     ];
+    $config['components']['mailer']['transport'] = [
+        'class' => 'Swift_SmtpTransport',
+        'host' => env('SMTP_HOST'),
+        'port' => env('SMTP_PORT'),
+        'username' => 'participacionciudadana@conatel.gob.ve',
+        'password' => 'C0n4t3l2022*/',
+        'port' => '587', // El puerto 25 es un puerto común también
+        'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
+        'streamOptions' => [
+                     'ssl' => [
+                         'allow_self_signed' => true,
+                         'verify_peer' => false,
+                         'verify_peer_name' => false,
+                     ]
+                 ],
+    ];
 }
 
 if (YII_ENV_DEV) {
@@ -193,10 +210,17 @@ if (YII_ENV_DEV) {
         'class' => 'Swift_SmtpTransport',
         'host' => env('SMTP_HOST'),
         'port' => env('SMTP_PORT'),
-        'username' => 'raebpagos1980@gmail.com',
-        'password' => 'Exp9800654',
+        'username' => 'participacionciudadana@conatel.gob.ve',
+        'password' => 'C0n4t3l2022*/',
         'port' => '587', // El puerto 25 es un puerto común también
         'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
+        'streamOptions' => [
+                     'ssl' => [
+                         'allow_self_signed' => true,
+                         'verify_peer' => false,
+                         'verify_peer_name' => false,
+                     ]
+                 ],
     ];
 }
 

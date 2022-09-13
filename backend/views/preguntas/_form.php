@@ -16,7 +16,15 @@ use yii\bootstrap4\ActiveForm;
             <div class="card-body">
                 <?php echo $form->errorSummary($model); ?>
 
-                <?php echo $form->field($model, 'id_taller')->textInput() ?>
+                <?= $form->field($model, 'id_taller')->widget(\kartik\select2\Select2::classname(), [
+                        'language' => 'es',
+                        'theme' => \kartik\select2\Select2::THEME_KRAJEE_BS4,
+                        'data' => \yii\helpers\ArrayHelper::map(\backend\models\Taller::find()->asArray()->all(), 'id', 'nombre'),
+                        'options' => ['placeholder' => 'seleccione un Taller...'],
+                        'pluginOptions' => [
+                            'allowClear' => false
+                        ]
+                    ]); ?>
                 <?php echo $form->field($model, 'pregunta')->textInput() ?>
                 
             </div>

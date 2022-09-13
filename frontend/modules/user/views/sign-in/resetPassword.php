@@ -19,6 +19,9 @@ $this->title = Yii::t('frontend', 'Reset password');
                 <div class="card-body">
                     <h1 class="h4 text-muted text-center"><?php echo Html::encode($this->title) ?></h1>
                     <?php echo $form->field($model, 'password')->passwordInput() ?>
+                    <?= $form->field($model, 'captcha')->widget(Captcha::class, [
+                        'captchaAction'=>'/site/captcha'
+                    ]); ?>
                     <div class="form-group">
                         <?php echo Html::submitButton(Yii::t('frontend', 'Change Password'), ['class' => 'btn btn-primary btn-lg btn-block', 'name' => 'login-button']) ?>
                     </div>

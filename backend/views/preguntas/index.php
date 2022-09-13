@@ -35,9 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-
                     'id',
-                    'id_taller',
+                    [
+                        'label'=>'Taller',
+                        'attribute'=>'id_taller',
+                        'value'=>function($model){
+                            $taller = \backend\models\Taller::find()->where(['id' => $model->id_taller])->one();
+                            return $taller->nombre;
+                        }
+                    ],
                     'pregunta',
                     
                     ['class' => \common\widgets\ActionColumn::class],

@@ -98,6 +98,9 @@ class SignInController extends \yii\web\Controller
             return ActiveForm::validate($model);
         }
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $session = Yii::$app->session;
+            Yii::$app->session->open();
+            $session['user'] = $model->login();
             return $this->redirect('../../taller/index');
         }
 

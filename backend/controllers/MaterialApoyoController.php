@@ -38,7 +38,6 @@ class MaterialApoyoController extends Controller
         $id_taller = Yii::$app->request->get('id');
         $searchModel = new MaterialApoyoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$id_taller);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -100,9 +99,27 @@ class MaterialApoyoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        //$model->id_taller = Yii::$app->request->get('id');
+        if ($model->load(Yii::$app->request->post())) {
+            $file = UploadedFile::getInstance($model, 'file');
+            if (!is_null($file)) {
+                var_dump($file);
+                $model->file_src_filename = $file->name;
+                $ext = explode(".", $file->name);
+                $ext = (end($ext));
+                $model->file_web_filename = Yii::$app->security->generateRandomString().".{$ext}";
+                Yii::$app->params['uploadPath'] = Yii::getAlias('@root') . '/common/uploads/material_apoyo/';
+                $path = Yii::$app->params['uploadPath'] . $model->file_web_filename;
+                //echo Yii::$app->params['uploadPath'];exit();
+                $file->saveAs($path);
+            }
+            if ($model->save()) {     
+                //var_dump ($model->getErrors()); die();        
+                return $this->redirect(['view', 'id' => $model->id]);             
+            }  
+            else {
+                var_dump ($model->getErrors()); die();
+            }
         }
         return $this->render('update', [
             'model' => $model,

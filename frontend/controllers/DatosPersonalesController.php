@@ -8,6 +8,7 @@ use frontend\models\search\DatosPersonalesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * DatosPersonalesController implements the CRUD actions for DatosPersonales model.

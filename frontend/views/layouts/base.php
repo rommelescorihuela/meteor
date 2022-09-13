@@ -22,12 +22,14 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
         'items' => [
             //['label' => Yii::t('frontend', 'Home'), 'url' => ['/site/index']],
             //['label' => Yii::t('frontend', 'About'), 'url' => ['/page/view', 'slug'=>'about']],
+            ['label' => Yii::t('frontend', 'Login'), 'url' => ['/user/sign-in/login'], 'visible'=>(Yii::$app->user->isGuest and !isset($_SESSION['user']))],
+            ['label' => Yii::t('frontend', 'Signup'), 'url' => ['/user/sign-in/signup'], 'visible'=>(Yii::$app->user->isGuest and !isset($_SESSION['user']))],
             ['label' => Yii::t('frontend', 'Solicitudes'), 'url' => ['/datos-organizacion/index'], 'visible'=>!Yii::$app->user->isGuest],
             ['label' => Yii::t('frontend', 'Articles'), 'url' => ['/article/index']],
             ['label' => Yii::t('frontend', 'Contact'), 'url' => ['/site/contact']],
-            ['label' => Yii::t('frontend', 'Signup'), 'url' => ['/user/sign-in/signup'], 'visible'=>Yii::$app->user->isGuest],
-            ['label' => Yii::t('frontend', 'Login'), 'url' => ['/user/sign-in/login'], 'visible'=>Yii::$app->user->isGuest],
-            ['label' => Yii::t('frontend', 'Students'), 'url' => ['/alumnos/sign-in/login'], 'visible'=>Yii::$app->user->isGuest],
+            ['label' => Yii::t('frontend', 'Students'), 'url' => ['/alumnos/sign-in/login'], 'visible'=>!isset($_SESSION['user'])],
+            ['label' => Yii::t('frontend', 'Talleres'), 'url' => ['/taller/index'], 'visible'=>isset($_SESSION['user'])],
+            ['label' => Yii::t('frontend', 'Close'), 'url' => ['/site/logout'], 'visible'=>isset($_SESSION['user'])],
             [
                 'label' => Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->getPublicIdentity(),
                 'visible'=>!Yii::$app->user->isGuest,

@@ -50,7 +50,7 @@ use trntv\filekit\widget\Upload;
 
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     
 <?php
   echo $form->field($model, 'estado')->widget(Select2::classname(), [
@@ -66,7 +66,7 @@ use trntv\filekit\widget\Upload;
   ])->label('Estado');
 ?>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
 <?php
   echo $form->field($model, 'municipio')->widget(DepDrop::classname(), [
     'type' => DepDrop::TYPE_SELECT2,
@@ -85,7 +85,7 @@ use trntv\filekit\widget\Upload;
   ])->label('Municipio');
 ?>
 </div>
-<div class="col-md-4">
+<div class="col-md-3">
 <?php
 echo $form->field($model, 'idparroquia')->widget(DepDrop::classname(), [
   'type' => DepDrop::TYPE_SELECT2,
@@ -102,6 +102,9 @@ echo $form->field($model, 'idparroquia')->widget(DepDrop::classname(), [
   ]
 ])->label('Parroquia');
 ?>
+</div>
+<div class="col-md-3">
+<?= $form->field($model, 'ciudad')->textInput() ?>
 </div>
 </div>
 <div class="row">
@@ -136,8 +139,8 @@ echo $form->field($model, 'idparroquia')->widget(DepDrop::classname(), [
                 'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
                 'widgetBody' => '.container-items', // required: css class selector
                 'widgetItem' => '.item', // required: css class
-                'limit' => 4, // the maximum times, an element can be cloned (default 999)
-                'min' => 1, // 0 or 1 (default 1)
+                'limit' => 10, // the maximum times, an element can be cloned (default 999)
+                'min' => 7, // 0 or 1 (default 1)
                 'insertButton' => '.add-item', // css class
                 'deleteButton' => '.remove-item', // css class
                 'model' => $modelper[0],
@@ -199,19 +202,9 @@ echo $form->field($model, 'idparroquia')->widget(DepDrop::classname(), [
                             <div class="col-sm-4">
                                 <?= $form->field($modelAddress, "[{$i}]profesion_oficio")->textInput(['maxlength' => true]) ?>
                             </div>
-                            <div class="col-sm-2">
-                                <?= $form->field($modelAddress, "[{$i}]representante")->widget(Select2::classname(), [
-                                  'id' => "[{$i}]representante",
-                                  'data' => [1=>'Si',2=>'No'],
-                                  'options' => ['placeholder' => 'Seleccione'],
-                                  'pluginOptions' => [
-                                  'allowClear' => true
-                                  ],
-                                ]);?>
-                            </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-4">
                                 <?= $form->field($modelAddress, "[{$i}]integrante")->widget(Select2::classname(), [
-                                    'data' => [1=>'Si',2=>'No'],
+                                    'data' => [1=>'Vocero Principal',2=>'Vocero Suplente',3=>'integrante'],
                                     'options' => ['placeholder' => 'Seleccione'],
                                     'pluginOptions' => [
                                     'allowClear' => true

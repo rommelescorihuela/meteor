@@ -21,6 +21,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\web\Controller;
 use yii\widgets\ActiveForm;
 
 /**
@@ -40,7 +41,11 @@ class SignInController extends \yii\web\Controller
             'oauth' => [
                 'class' => AuthAction::class,
                 'successCallback' => [$this, 'successOAuthCallback']
-            ]
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null
+            ],
         ];
     }
 

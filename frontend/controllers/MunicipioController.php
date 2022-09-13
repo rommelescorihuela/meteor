@@ -8,6 +8,7 @@ use frontend\models\search\MunicipioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * MunicipioController implements the CRUD actions for Municipio model.

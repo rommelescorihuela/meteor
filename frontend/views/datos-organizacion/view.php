@@ -144,6 +144,11 @@ h5.panel-title {
           //'id',
           'nombre',
           'apellido',
+          'cedula',
+          'telefono1',
+          'telefono2',
+          'telefono3',
+          'correo',
       ],
 ]); 
 ?>

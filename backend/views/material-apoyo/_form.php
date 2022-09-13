@@ -19,16 +19,14 @@ use kartik\file\FileInput;
         <div class="card">
             <div class="card-body">
                 <?php echo $form->errorSummary($model); ?>
-
                 <?php echo $form->field($model, 'nombre')->textInput() ?>
                 <?php echo $form->field($model, 'tipo')->textInput() ?>
                 <?php echo $form->field($model, 'id_taller')->textInput() ?>
-                <?= $form->field($model, 'file')->widget(FileInput::classname(), [
-                    'options' => ['accept' => 'image/*'],
-                    'pluginOptions'=>['allowedFileExtensions'=>['jpg','gif','png','pdf','mp4'],'showUpload' => false,],
-                    ]);   
+                <?php echo $form->field($model, 'file')->widget(FileInput::classname(), [
+                    //'options' => ['accept' => 'image/*'],
+                    'pluginOptions'=>['allowedFileExtensions'=>['jpg','png','pdf','mp4','xls','doc'],'showUpload' => false,],
+                    ]);
                 ?>
-                
             </div>
             <div class="card-footer">
                 <?php echo Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

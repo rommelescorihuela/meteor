@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\captcha\Captcha;
+
 
 /**
  * @var yii\web\View $this
@@ -19,6 +21,9 @@ $this->title =  Yii::t('frontend', 'Request password reset');
                 <div class="card-body">
                     <h1 class="h4 text-muted text-center"><?php echo Html::encode($this->title) ?></h1>
                     <?php echo $form->field($model, 'email')->input('email') ?>
+                    <?= $form->field($model, 'captcha')->widget(Captcha::class, [
+                        'captchaAction'=>'/site/captcha'
+                    ]); ?>
                     <div class="form-group">
                         <?php echo Html::submitButton(Yii::t('frontend', 'Send Email'), ['class' => 'btn btn-primary btn-lg btn-block', 'name' => 'login-button']) ?>
                     </div>
@@ -28,3 +33,9 @@ $this->title =  Yii::t('frontend', 'Request password reset');
     </div>
 </div>
 <?php ActiveForm::end(); ?>
+<?php
+    $js = <<<JS
+       $('#passwordresetrequestform-captcha-image').trigger('click');
+    JS;
+    $this->registerJs($js, $this::POS_READY);
+?>

@@ -32,10 +32,10 @@ class RespuestasController extends Controller
      * Lists all Respuestas models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id_alumno)
     {
         $searchModel = new RespuestasSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$id_alumno);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

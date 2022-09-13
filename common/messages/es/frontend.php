@@ -91,5 +91,7 @@ return [
     'Contact Support' => 'Contactar a Soporte',
     'Go to Home' => 'Ir al Inicio',
     'Oops! There was an error...' => 'Ups! Hubo un error...',
-    'Students' => 'Alumnos'
+    'Students' => 'Alumnos',
+    'Close' => 'Cerrar',
+    'Login to Student Module' => 'Ingresar al modulo de estudio'
 ];

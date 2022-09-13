@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\bootstrap4\Modal;
 //use yii\widgets\DetailView;
 use kartik\detail\DetailView;
 use kartik\grid\GridView;
@@ -12,9 +14,9 @@ use backend\models\DatosPersonales;
 /* @var $this yii\web\View */
 /* @var $model app\models\DatosOrganizacion */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Datos Organizacions', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+//$this->title = $model->id;
+//$this->params['breadcrumbs'][] = ['label' => 'Datos Organizacions', 'url' => ['index']];
+//$this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <style type="text/css" media="screen">
@@ -35,18 +37,6 @@ h5.panel-title {
 <div class="datos-organizacion-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -144,6 +134,21 @@ h5.panel-title {
           //'id',
           'nombre',
           'apellido',
+          'cedula',
+          'telefono1',
+          'telefono2',
+          'telefono3',
+          'correo',
+          [
+            'label' => 'Respuestas',
+            'format'=> 'raw',
+            'value' => function($model){
+                return Html::a("Respuestas",Url::to(['respuestas/index', 'id_alumno' => $model->id]), [
+                    'id' => 'modalButton'.$model->id,
+                    'class' => "btn btn-outline-secondary",
+                ]);
+            },
+          ],
       ],
 ]); 
 ?>
@@ -162,4 +167,4 @@ h5.panel-title {
                     </li>
                 <?php endforeach; ?>
             </ul>
-        <?php endif; ?>
+<?php endif; ?>

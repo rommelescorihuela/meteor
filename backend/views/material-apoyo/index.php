@@ -45,11 +45,35 @@ $this->params['breadcrumbs'][] = $this->title;
                      'format' => 'raw',
                      'value' => function ($model) {   
                         if ($model->file_web_filename!='')
-                          return '<img src="'.Yii::$app->homeUrl. '/uploads/status/'.$model->file_web_filename.'" width="50px" height="auto">'; else return 'no file';
+                          return '<a href="'.Yii::$app->homeUrl. '/../../common/uploads/material_apoyo/'.$model->file_web_filename.'" width="50px" height="auto">Ver Archivo</a>'; else return 'no file';
                      },
                    ],
                     
-                    ['class' => \common\widgets\ActionColumn::class],
+                    [
+                        'class' => \common\widgets\ActionColumn::class,
+                        'template' => '{view} {update} {delete} {material}',
+                        'buttons'=> [
+                            'view' => function ($url, $model) {
+                                return Html::a("", $url, [
+                                    'title' => "",
+                                    'class' => 'fas fa-eye',
+                                ]);
+                            },
+                            'update' => function ($url, $model) {
+                                return Html::a("", $url, [
+                                    'title' => "",
+                                    'class' => 'fas fa-edit',
+                                ]);
+                            },
+                            'delete' => function ($url, $model) {
+                                return Html::a("", $url, [
+                                    'title' => "",
+                                    'class' => 'fas fa-trash',
+                                ]);
+                            },
+
+                        ],
+                    ],
                 ],
             ]); ?>
     

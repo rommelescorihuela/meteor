@@ -11,15 +11,15 @@ use Yii;
  * @property string $nombre
  * @property string $tipo
  * @property int $id_taller
+ * @property string|null $file
+ * @property string|null $file_src_filename
+ * @property string|null $file_web_filename
  *
  * @property Taller $taller
  * @property UsuarioMaterial[] $usuarioMaterials
  */
 class MaterialApoyo extends \yii\db\ActiveRecord
 {
-    public $file;
-    public $file_src_filename;
-    public $file_web_filename;
     /**
      * {@inheritdoc}
      */
@@ -35,15 +35,11 @@ class MaterialApoyo extends \yii\db\ActiveRecord
     {
         return [
             [['nombre', 'tipo', 'id_taller'], 'required'],
-            [['nombre', 'tipo'], 'string'],
+            [['nombre', 'tipo', 'file', 'file_src_filename', 'file_web_filename'], 'string'],
+            [['file','file_src_filename', 'file_web_filename'], 'file', 'extensions' => 'pdf, png, jpg, mp4, xls, doc'],
             [['id_taller'], 'default', 'value' => null],
             [['id_taller'], 'integer'],
             [['id_taller'], 'exist', 'skipOnError' => true, 'targetClass' => Taller::className(), 'targetAttribute' => ['id_taller' => 'id']],
-            [['file'], 'safe'],
-            [['file'], 'file', 'extensions'=>'jpg, gif, png, pdf, mp4'],
-            [['file'], 'file', 'maxSize'=>'1000000'],
-            [['file_src_filename', 'file_web_filename'], 'string', 'max' => 255],
-
         ];
     }
 
@@ -57,8 +53,9 @@ class MaterialApoyo extends \yii\db\ActiveRecord
             'nombre' => 'Nombre',
             'tipo' => 'Tipo',
             'id_taller' => 'Id Taller',
-            'file_src_filename' => Yii::t('backend', 'Filename'),
-            'file_web_filename' => Yii::t('backend', 'Pathname'),          
+            'file' => 'File',
+            'file_src_filename' => 'File Src Filename',
+            'file_web_filename' => 'File Web Filename',
         ];
     }
 

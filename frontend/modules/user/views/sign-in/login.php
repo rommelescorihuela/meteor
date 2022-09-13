@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\captcha\Captcha;
+
 
 /**
  * @var yii\web\View $this
@@ -26,7 +28,9 @@ $this->title = Yii::t('frontend', 'Login');
                         <?php echo $form->field($model, 'rememberMe')->checkbox() ?>
                         <?php echo Html::a(Yii::t('frontend', 'Forgot your password?'), ['sign-in/request-password-reset'], ['class' => ['text-sm']]) ?>
                     </div>
-
+                    <?= $form->field($model, 'captcha')->widget(Captcha::class, [
+                        'captchaAction'=>'/site/captcha'
+                    ]); ?>
                     <div class="form-group">
                         <?php echo Html::submitButton(Yii::t('frontend', 'Login'), ['class' => 'btn btn-primary btn-lg btn-block', 'name' => 'login-button']) ?>
                     </div>
@@ -42,3 +46,9 @@ $this->title = Yii::t('frontend', 'Login');
     </div>
 </div>
 <?php ActiveForm::end(); ?>
+<?php
+    $js = <<<JS
+       $('#loginform-captcha-image').trigger('click');
+    JS;
+    $this->registerJs($js, $this::POS_READY);
+?>

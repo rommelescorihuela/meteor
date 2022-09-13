@@ -39,9 +39,9 @@ class RespuestasSearch extends Respuestas
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params,$id_alumno)
     {
-        $query = Respuestas::find();
+        $query = Respuestas::find()->where(['id_alumno' => $id_alumno]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

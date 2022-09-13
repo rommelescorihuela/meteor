@@ -34,6 +34,8 @@ class SignupForm extends Model
      */
     public $password_confirm;
 
+    public $captcha;
+
     /**
      * @inheritdoc
      */
@@ -57,6 +59,7 @@ class SignupForm extends Model
 
             ['password', 'string', 'min' => 6],
             ['password_confirm', 'compare', 'compareAttribute' => 'password', 'skipOnEmpty' => false],
+            ['captcha', 'captcha'],
         ];
     }
 

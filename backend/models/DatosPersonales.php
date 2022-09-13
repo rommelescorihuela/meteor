@@ -60,7 +60,7 @@ class DatosPersonales extends \yii\db\ActiveRecord
             'telefono3' => 'Telefono3',
             'correo' => 'Correo',
             'representante' => 'Representante',
-            'integrante' => 'Integrante',
+            'integrante' => 'Estructura',
             'id_organizacion' => 'Id Organizacion',
             'id' => 'ID',
         ];

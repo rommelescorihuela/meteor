@@ -22,6 +22,7 @@ use trntv\filekit\behaviors\UploadBehavior;
  * @property int|null $idservicios
  * @property int|null $id_user
  * @property int $id
+ * @property string|null $ciudad
  * @property array    $adjunto
  *
  * @property DatosJuridicos[] $datosJuridicos
@@ -68,7 +69,7 @@ class DatosOrganizacion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre_o1', 'nombre_o2', 'nombre_o3', 'funcionario', 'direccion', 'observaciones', 'servicios'], 'string'],
+            [['nombre_o1', 'nombre_o2', 'nombre_o3', 'funcionario', 'direccion', 'observaciones', 'servicios','ciudad'], 'string'],
             [['fecha_registro','adjunto'], 'safe'],
             [['id_direccion', 'n_integrantes', 'idtiposolicitud', 'idparroquia', 'idservicios', 'id_user'], 'default', 'value' => null],
             [['id_direccion', 'n_integrantes', 'idtiposolicitud', 'idparroquia', 'idservicios', 'id_user'], 'integer'],
@@ -99,6 +100,7 @@ class DatosOrganizacion extends \yii\db\ActiveRecord
             'idservicios' => 'Idservicios',
             'id_user' => 'Id User',
             'id' => 'ID',
+            'ciudad' => 'Ciudad',
         ];
     }
 

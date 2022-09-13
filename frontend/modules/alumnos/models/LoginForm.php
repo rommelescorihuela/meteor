@@ -18,6 +18,8 @@ class LoginForm extends Model
 
     private $user = false;
 
+    public $captcha;
+
     /**
      * @inheritdoc
      */
@@ -28,6 +30,7 @@ class LoginForm extends Model
             [['identity', 'password'], 'required'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            ['captcha', 'captcha'],
         ];
     }
 
@@ -51,7 +54,7 @@ class LoginForm extends Model
             if (!$user || $user->password!=$this->password) {
                 $this->addError('password', Yii::t('frontend', 'Incorrect username or password.'));
             }
-            else{return true;}
+            else{return $user;}
         }
     }
 
@@ -80,7 +83,7 @@ class LoginForm extends Model
     {
         //var_dump($this->validatePassword());
         if ($this->validatePassword()) {
-            return true;
+            return $this->validatePassword();
         }
         else{return false;}
         

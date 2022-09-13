@@ -16,6 +16,8 @@ class ResetPasswordForm extends Model
      * @var
      */
     public $password;
+    public $captcha;
+
 
     /**
      * @var common\models\UserToken
@@ -55,6 +57,7 @@ class ResetPasswordForm extends Model
         return [
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['captcha', 'captcha'],
         ];
     }
 

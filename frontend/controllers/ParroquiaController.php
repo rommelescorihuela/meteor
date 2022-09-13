@@ -8,6 +8,7 @@ use frontend\models\search\ParroquiaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ParroquiaController implements the CRUD actions for Parroquia model.

@@ -7,8 +7,8 @@ use yii\widgets\Pjax;
 /* @var $searchModel frontend\models\TallerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tallers';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Talleres diponibles';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="taller-index">
 
@@ -32,30 +32,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                         'class' => \common\widgets\ActionColumn::class,
-                        'template' => '{view} {update} {delete} {material}',
+                        'template' => '{material} {preguntas}',
+                        'header' => 'Acciones',
                         'buttons'=> [
-                            'view' => function ($url, $model) {
-                                return Html::a("", $url, [
-                                    'title' => "",
-                                    'class' => 'fas fa-eye',
-                                ]);
-                            },
-                            'update' => function ($url, $model) {
-                                return Html::a("", $url, [
-                                    'title' => "",
-                                    'class' => 'fas fa-edit',
-                                ]);
-                            },
-                            'delete' => function ($url, $model) {
-                                return Html::a("", $url, [
-                                    'title' => "",
-                                    'class' => 'fas fa-trash',
-                                ]);
-                            },
                             'material' => function ($url, $model) {
-                                return Html::a("", "../material-apoyo/index?id=".$model->id, [
+                                return Html::a(" Material de apoyo ", "../material-apoyo/index?id=".$model->id, [
                                     'title' => "",
                                     'class' => 'fas fa-book',
+                                ]);
+                            },
+                            'preguntas' => function ($url, $model) {
+                                return Html::a(" Preguntas", "../preguntas/index?id=".$model->id, [
+                                    'title' => "",
+                                    'class' => 'fas fa-question',
                                 ]);
                             },
 

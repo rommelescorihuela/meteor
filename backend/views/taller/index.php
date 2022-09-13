@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     
                     [
                         'class' => \common\widgets\ActionColumn::class,
-                        'template' => '{view} {update} {delete} {material}',
+                        'template' => '{view} {update} {delete} {material} {pregunta}',
                         'buttons'=> [
                             'view' => function ($url, $model) {
                                 return Html::a("", $url, [
@@ -65,6 +65,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return Html::a("", "../material-apoyo/index?id=".$model->id, [
                                     'title' => "",
                                     'class' => 'fas fa-book',
+                                ]);
+                            },
+                            'pregunta' => function ($url, $model) {
+                                return Html::a("", "../preguntas/index", [
+                                    'title' => "",
+                                    'class' => 'fas fa-question',
                                 ]);
                             },
 

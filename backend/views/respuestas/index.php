@@ -14,11 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="respuestas-index">
     <div class="card">
-        <div class="card-header">
-            <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Respuestas',
-]), ['create'], ['class' => 'btn btn-success']) ?>
-        </div>
 
         <div class="card-body p-0">
             <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -35,12 +30,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
+                    [
+                        'label' => 'taller',
+                        'value' =>function($model){
+                            $pregunta = \backend\models\Preguntas::find()->where(['id' => $model->id_pregunta])->one();
+                            $taller = \backend\models\Taller::find()->where(['id' => $pregunta->id_taller])->one();
+                            return $taller->nombre;
+                        }
+                    ],
+                    [
+                        'label' => 'Alumno',
+                        'value' => function($model){
+                            return $model->alumno->nombre.' '.$model->alumno->apellido;
+                        }
+                    ],
+                    [
+                        'label' => 'Pregunta',
+                        'attribute' => 'id_pregunta',
+                        'value' => 'pregunta.pregunta',
 
-                    'id',
-                    'id_pregunta',
-                    'id_alumno',
+                    ],
                     'respuesta',
-                    'id_alumno_juridico',
+                    //'id_alumno_juridico',
                     
                     ['class' => \common\widgets\ActionColumn::class],
                 ],

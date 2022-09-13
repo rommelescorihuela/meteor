@@ -199,19 +199,9 @@ echo $form->field($model, 'idparroquia')->widget(DepDrop::classname(), [
                             <div class="col-sm-4">
                                 <?= $form->field($modelAddress, "[{$i}]profesion_oficio")->textInput(['maxlength' => true]) ?>
                             </div>
-                            <div class="col-sm-2">
-                                <?= $form->field($modelAddress, "[{$i}]representante")->widget(Select2::classname(), [
-                                  'id' => "[{$i}]representante",
-                                  'data' => [1=>'Si',2=>'No'],
-                                  'options' => ['placeholder' => 'Seleccione'],
-                                  'pluginOptions' => [
-                                  'allowClear' => true
-                                  ],
-                                ]);?>
-                            </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-4">
                                 <?= $form->field($modelAddress, "[{$i}]integrante")->widget(Select2::classname(), [
-                                    'data' => [1=>'Si',2=>'No'],
+                                    'data' => [1=>'Vocero Principal',2=>'Vocero Suplente',3=>'integrante'],
                                     'options' => ['placeholder' => 'Seleccione'],
                                     'pluginOptions' => [
                                     'allowClear' => true

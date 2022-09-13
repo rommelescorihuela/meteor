@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-footer">
             <?php
                 if ($model->file_web_filename!='') {
-                    echo '<br /><p><img src="'.Yii::$app->homeUrl. '/uploads/status/'.$model->file_web_filename.'"></p>';
+                    echo '<br /><p><a href="'.Yii::$app->homeUrl. '/../../common/uploads/material_apoyo/'.$model->file_web_filename.'">Ver Archivo</a></p>';
                 }    
             ?>      
         </div>

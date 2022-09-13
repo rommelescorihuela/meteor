@@ -8,6 +8,7 @@ use frontend\models\search\ServiciosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ServiciosController implements the CRUD actions for Servicios model.

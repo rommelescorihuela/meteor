@@ -21,6 +21,9 @@ use yii\bootstrap4\ActiveForm;
     <?php echo $form->field($model, 'nombre') ?>
     <?php echo $form->field($model, 'tipo') ?>
     <?php echo $form->field($model, 'id_taller') ?>
+    <?php echo $form->field($model, 'file') ?>
+    <?php // echo $form->field($model, 'file_src_filename') ?>
+    <?php // echo $form->field($model, 'file_web_filename') ?>
 
     <div class="form-group">
         <?php echo Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>

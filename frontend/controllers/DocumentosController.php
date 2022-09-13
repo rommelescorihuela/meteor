@@ -8,6 +8,7 @@ use frontend\models\search\DocumentosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * DocumentosController implements the CRUD actions for Documentos model.

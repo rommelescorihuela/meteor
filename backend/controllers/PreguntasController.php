@@ -63,6 +63,7 @@ class PreguntasController extends Controller
     public function actionCreate()
     {
         $model = new Preguntas();
+        $model->id_taller = Yii::$app->request->get('id');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
